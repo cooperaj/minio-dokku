@@ -1,6 +1,9 @@
-FROM minio/minio:latest
-EXPOSE 9000
-RUN adduser -D -g "" dokku
+FROM minio/minio
+
+EXPOSE 5000
+
+RUN adduser -D -u 1000 dokku
 USER dokku
-RUN mkdir /home/dokku/data
-CMD ["server", "/home/dokku/data"]
+WORKDIR /home/dokku
+
+CMD ["server", "--address", ":5000", "/home/dokku/data"]
