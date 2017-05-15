@@ -2,7 +2,7 @@ FROM minio/minio
 
 EXPOSE 5000
 
-RUN adduser -D -u 1000 dokku
+RUN adduser -D -u 32767 dokku
 USER dokku
 WORKDIR /home/dokku
 
