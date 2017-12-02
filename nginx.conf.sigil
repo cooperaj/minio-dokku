@@ -81,5 +81,7 @@ server {
 {{ end }}{{ end }}
 
 upstream {{ .APP }} {
-  server 127.0.0.1:5000;
+  {{ range .DOKKU_APP_LISTENERS | split " " }}
+  server {{ . }};
+  {{ end }}
 }
